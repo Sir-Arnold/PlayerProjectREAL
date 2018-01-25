@@ -11,6 +11,7 @@ public class Player
    private int mySteps;       // # of total steps this object has taken
    private int myID;          // unique ID # of this object
    private int myShapeValue;  // display of player based on direction: 1:^, 2: >, -1: v, -2: <
+   private String reasonDead;    // justification for why player died
    
    // class variables ************************************    
    
@@ -31,7 +32,7 @@ public class Player
         
       myDirection = 2;
       mySpeed = 1;
-      myX = 0;
+      myX = 5;
       myY = 0;
       myShapeValue = 2;
         
@@ -123,6 +124,14 @@ public class Player
    public void setAlive(boolean alive)
    {
       myAlive = alive;
+   }
+   public void setReasonDead(String reason)
+   {
+      reasonDead = reason;
+   }
+   public String whyDead()
+   {
+      return reasonDead;
    }
     
    // interesting methods *******************************
@@ -270,7 +279,8 @@ public class Player
       }
       else
       {
-         myAlive = false;            // player resets if over max # of steps or actions
+         myAlive = false;            // player dies if over max # of steps or actions
+         reasonDead = "Starved to death";
       }
         
    } // end of move method

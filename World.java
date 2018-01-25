@@ -20,6 +20,7 @@ public class World
       return myLength;
    }
 
+//////////////////////////////////// interesting methods
    public void displayWorld(Player player, Zombie zombie, World world)
    {
       int playerX = player.getX();
@@ -208,5 +209,50 @@ public class World
             }
          } // end of for loop
       } // end of if zombieY < playerY
+   }
+   
+   public void displayWorld(Player player, World world)
+   {
+      int playerX = player.getX();
+      int playerY = player.getY();
+      
+      int worldLength = world.getLength();
+      
+      for (int i = 0; i < worldLength; i++)
+      {
+         if (playerY < ((worldLength / 2) - i))
+         {
+            for (int j = 0; j <= worldLength; j++)
+            {
+               System.out.print("#");
+            }
+            System.out.print("\n");
+         }
+         
+         else if (playerY == ((worldLength / 2) - i))
+         {
+            for (int j = 0; j < playerX; j++)
+               {
+                  System.out.print("#");
+               }
+            
+               System.out.print(player.shape());
+            
+               for (int j = 0; j < (worldLength - playerX); j++)
+               {
+                  System.out.print("#");
+               }
+               System.out.print("\n");
+         }
+         
+         else if (playerY > ((worldLength / 2) - i))
+         {
+            for (int j = 0; j <= worldLength; j++)
+            {
+               System.out.print("#");
+            }
+            System.out.print("\n");
+         }
+      }
    }
 } // end of world class
